@@ -24,14 +24,6 @@ class RuLocale extends AbstractIdentifiable implements LocaleInterface
     /**
      * @inheritDoc
      */
-    public function getName() : string
-    {
-        return 'ru';
-    }
-
-    /**
-     * @inheritDoc
-     */
     public function getWeekStartsAt(): int
     {
         return 1;

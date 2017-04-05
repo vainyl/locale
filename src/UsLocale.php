@@ -24,14 +24,6 @@ class UsLocale extends AbstractIdentifiable implements LocaleInterface
     /**
      * @inheritDoc
      */
-    public function getName() : string
-    {
-        return 'us';
-    }
-
-    /**
-     * @inheritDoc
-     */
     public function getWeekStartsAt(): int
     {
         return 0;

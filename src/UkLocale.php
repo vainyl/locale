@@ -21,15 +21,6 @@ use Vainyl\Core\Id\AbstractIdentifiable;
  */
 class UkLocale extends AbstractIdentifiable implements LocaleInterface
 {
-
-    /**
-     * @inheritDoc
-     */
-    public function getName() : string
-    {
-        return 'uk';
-    }
-
     /**
      * @inheritDoc
      */
