@@ -1,0 +1,19 @@
+services:
+  locale.us:
+    class: Vainyl\Locale\Locale
+    arguments: [0, 6, [0, 6], 'Y-m-d H:i:s']
+    tags:
+      - {name: locale, alias: us}
+  locale.ru:
+    class: Vainyl\Locale\Locale
+    arguments: [1, 0, [0, 1], 'Y-m-d H:i:s']
+    tags:
+      - {name: locale, alias: ru}
+  locale:uk:
+    class: Vainyl\Locale\Locale
+    arguments: [1, 0, [0, 1], 'Y-m-d H:i:s']
+    tags:
+      - {name: locale, alias: uk}
+  locale.storage:
+    parent: storage.proxy
+    class: Vainyl\Locale\Storage\LocaleStorage
