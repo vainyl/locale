@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Vainyl\Locale\Storage;
 
-use Vainyl\Core\Storage\Proxy\AbstractStorageProxy;
+use Vainyl\Core\Storage\Decorator\AbstractStorageDecorator;
 use Vainyl\Locale\LocaleInterface;
 
 /**
@@ -20,7 +20,7 @@ use Vainyl\Locale\LocaleInterface;
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-class LocaleStorage extends AbstractStorageProxy
+class LocaleStorage extends AbstractStorageDecorator
 {
     /**
      * @param string          $name

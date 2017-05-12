@@ -15,5 +15,5 @@ services:
     tags:
       - {name: locale, alias: uk}
   locale.storage:
-    parent: storage.proxy
     class: Vainyl\Locale\Storage\LocaleStorage
+    arguments: ['@storage.prototype']
