@@ -13,7 +13,6 @@ declare(strict_types=1);
 namespace Vainyl\Locale\Extension;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Reference;
 use Vainyl\Core\Extension\AbstractExtension;
 use Vainyl\Core\Extension\AbstractFrameworkExtension;
 
@@ -42,9 +41,10 @@ class LocaleExtension extends AbstractFrameworkExtension
         $configuration = new LocaleConfiguration();
         $localeConfiguration = $this->processConfiguration($configuration, $configs);
 
-        $definition = $container->getDefinition('locale.storage');
-        $localeDefinition = $container->getDefinition('locale.' . $localeConfiguration['default']);
-        $definition->addMethodCall('addLocale', ['default', new Reference($localeDefinition)]);
+        $definition = $container->getDefinition('locale.' . $localeConfiguration['default']);
+        $copy = clone $definition;
+        $copy->setTags(array_replace_recursive($definition->getTags(), ['locale' => [['alias' => 'default']]]));
+        $container->setDefinition('locale.default', $copy);
 
         return $this;
     }
