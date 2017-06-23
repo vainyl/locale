@@ -13,24 +13,39 @@ declare(strict_types=1);
 namespace Vainyl\Locale\Extension;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Vainyl\Core\Application\EnvironmentInterface;
 use Vainyl\Core\Extension\AbstractExtension;
+use Vainyl\Core\Extension\AbstractFrameworkExtension;
 
 /**
  * Class LocaleExtension
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-class LocaleExtension extends AbstractExtension
+class LocaleExtension extends AbstractFrameworkExtension
 {
     /**
      * @inheritDoc
      */
-    public function load(array $configs, ContainerBuilder $container, EnvironmentInterface $environment = null): AbstractExtension
+    public function getCompilerPasses(): array
     {
-        $container
-            ->addCompilerPass(new LocaleCompilerPass());
+        return [new LocaleCompilerPass()];
+    }
 
-        return parent::load($configs, $container, $environment);
+    /**
+     * @inheritDoc
+     */
+    public function load(array $configs, ContainerBuilder $container): AbstractExtension
+    {
+        parent::load($configs, $container);
+
+        $configuration = new LocaleConfiguration();
+        $localeConfiguration = $this->processConfiguration($configuration, $configs);
+
+        $definition = $container->getDefinition('locale.' . $localeConfiguration['default']);
+        $copy = clone $definition;
+        $copy->setTags(array_replace_recursive($definition->getTags(), ['locale' => [['alias' => 'default']]]));
+        $container->setDefinition('locale.default', $copy);
+
+        return $this;
     }
 }

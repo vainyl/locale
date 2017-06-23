@@ -25,7 +25,7 @@ class Locale extends AbstractIdentifiable implements LocaleInterface
 
     private $weekEnd;
 
-    private $weekDays;
+    private $weekendDays;
 
     private $timeFormat;
 
@@ -34,14 +34,14 @@ class Locale extends AbstractIdentifiable implements LocaleInterface
      *
      * @param int    $weekStart
      * @param int    $weekEnd
-     * @param array  $weekDays
+     * @param array  $weekendDays
      * @param string $timeFormat
      */
-    public function __construct(int $weekStart, int $weekEnd, array $weekDays, string $timeFormat)
+    public function __construct(int $weekStart, int $weekEnd, array $weekendDays, string $timeFormat)
     {
         $this->weekStart = $weekStart;
         $this->weekEnd = $weekEnd;
-        $this->weekDays = $weekDays;
+        $this->weekendDays = $weekendDays;
         $this->timeFormat = $timeFormat;
     }
 
@@ -66,7 +66,7 @@ class Locale extends AbstractIdentifiable implements LocaleInterface
      */
     public function getWeekendDays(): array
     {
-        return $this->weekDays;
+        return $this->weekendDays;
     }
 
     /**
@@ -85,7 +85,7 @@ class Locale extends AbstractIdentifiable implements LocaleInterface
         return [
             'week_start'   => $this->weekStart,
             'week_end'     => $this->weekEnd,
-            'weekend_days' => $this->weekEnd,
+            'weekend_days' => $this->weekendDays,
             'time_format'  => $this->timeFormat,
         ];
     }
