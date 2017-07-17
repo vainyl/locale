@@ -13,13 +13,14 @@ declare(strict_types=1);
 namespace Vainyl\Locale;
 
 use Vainyl\Core\ArrayInterface;
+use Vainyl\Core\NameableInterface;
 
 /**
  * Interface LocaleInterface
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-interface LocaleInterface extends ArrayInterface
+interface LocaleInterface extends NameableInterface, ArrayInterface
 {
     /**
      * @return int

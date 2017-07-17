@@ -50,6 +50,14 @@ class Locale extends AbstractArray implements LocaleInterface
     }
 
     /**
+     * @inheritDoc
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
      * @return int
      */
     public function getWeekStartsAt(): int

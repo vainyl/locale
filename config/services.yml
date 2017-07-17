@@ -1,17 +1,17 @@
 services:
   locale.us:
     class: Vainyl\Locale\Locale
-    arguments: ['us', 0, 6, [0, 6], 'Y-m-d H:i:s']
+    arguments: ['en-us', 0, 6, [0, 6], 'Y-m-d H:i:s']
     tags:
       - {name: locale, alias: us}
   locale.ru:
     class: Vainyl\Locale\Locale
-    arguments: ['ru', 1, 0, [0, 1], 'Y-m-d H:i:s']
+    arguments: ['ru-ru', 1, 0, [0, 1], 'Y-m-d H:i:s']
     tags:
       - {name: locale, alias: ru}
   locale.uk:
     class: Vainyl\Locale\Locale
-    arguments: ['uk', 1, 0, [0, 1], 'Y-m-d H:i:s']
+    arguments: ['uk-uk', 1, 0, [0, 1], 'Y-m-d H:i:s']
     tags:
       - {name: locale, alias: uk}
   locale.storage:
