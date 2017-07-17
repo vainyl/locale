@@ -88,4 +88,18 @@ class Locale extends AbstractArray implements LocaleInterface
     {
         return $this->timeFormat;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function toArray(): array
+    {
+        return [
+            'name'        => $this->name,
+            'weekStart'   => $this->weekStart,
+            'weekEnd'     => $this->weekEnd,
+            'weekendDays' => $this->weekendDays,
+            'timeFormat'  => $this->timeFormat,
+        ];
+    }
 }
