@@ -12,15 +12,17 @@ declare(strict_types=1);
 
 namespace Vainyl\Locale;
 
-use Vainyl\Core\AbstractIdentifiable;
+use Vainyl\Core\AbstractArray;
 
 /**
  * Class Locale
  *
  * @author Taras P. Girnyk <taras.p.gyrnik@gmail.com>
  */
-class Locale extends AbstractIdentifiable implements LocaleInterface
+class Locale extends AbstractArray implements LocaleInterface
 {
+    private $name;
+
     private $weekStart;
 
     private $weekEnd;
@@ -32,17 +34,27 @@ class Locale extends AbstractIdentifiable implements LocaleInterface
     /**
      * AbstractLocale constructor.
      *
+     * @param string $name
      * @param int    $weekStart
      * @param int    $weekEnd
      * @param array  $weekendDays
      * @param string $timeFormat
      */
-    public function __construct(int $weekStart, int $weekEnd, array $weekendDays, string $timeFormat)
+    public function __construct(string $name, int $weekStart, int $weekEnd, array $weekendDays, string $timeFormat)
     {
+        $this->name = $name;
         $this->weekStart = $weekStart;
         $this->weekEnd = $weekEnd;
         $this->weekendDays = $weekendDays;
         $this->timeFormat = $timeFormat;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getName(): string
+    {
+        return $this->name;
     }
 
     /**
@@ -83,10 +95,11 @@ class Locale extends AbstractIdentifiable implements LocaleInterface
     public function toArray(): array
     {
         return [
-            'week_start'   => $this->weekStart,
-            'week_end'     => $this->weekEnd,
-            'weekend_days' => $this->weekendDays,
-            'time_format'  => $this->timeFormat,
+            'name'        => $this->name,
+            'weekStart'   => $this->weekStart,
+            'weekEnd'     => $this->weekEnd,
+            'weekendDays' => $this->weekendDays,
+            'timeFormat'  => $this->timeFormat,
         ];
     }
 }
