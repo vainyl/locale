@@ -32,9 +32,8 @@ class LocaleConfiguration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('default')->defaultValue('us')->end()
-            ->end()
-        ;
+            ->scalarNode('default')->defaultValue('us')->end()
+            ->end();
 
         return $treeBuilder;
     }
