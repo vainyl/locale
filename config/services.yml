@@ -16,4 +16,4 @@ services:
       - {name: locale, alias: uk}
   locale.storage:
     class: Vainyl\Locale\Storage\LocaleStorage
-    arguments: ['@storage.prototype']
+    arguments: ['@map.prototype']
