@@ -28,7 +28,7 @@ class LocaleExtension extends AbstractFrameworkExtension
      */
     public function getCompilerPasses(): array
     {
-        return [new LocaleCompilerPass()];
+        return [[new LocaleCompilerPass()]];
     }
 
     /**
